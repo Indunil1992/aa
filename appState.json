@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "aa/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.listSubscriptionsByTopic({\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testsnsindunil'\n    }).promise()\n        .then(data => {\n            console.log(\"DATAAA\");\n            console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n            console.log(\"errrrrr\");\n            console.log(err);\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.setTopicAttributes({\n        AttributeName: 'DisplayName',\n        AttributeValue: 'Set T A as indunil',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testsnsindunil'\n    }).promise()\n        .then(data => {\n            console.log(\"dataaa\");\n            console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n            console.log(\"errorrrr\");\n            console.log(err);\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,15 +32,8 @@
         },
         "triggers": [],
         "testCases": {
-          "91136886-e495-41c2-b626-b418c42966d1": {
-            "id": "91136886-e495-41c2-b626-b418c42966d1",
-            "name": "Test event",
-            "functionId": "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
-            "event": "{\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\",\r\n    \"key3\": \"value3\"\r\n}",
-            "eventTemplate": "hello-world"
-          },
-          "5def83c8-3292-48a0-b9a9-eb94dfe079ba": {
-            "id": "5def83c8-3292-48a0-b9a9-eb94dfe079ba",
+          "81999126-4a23-4f89-b8b4-b356d6ce0a84": {
+            "id": "81999126-4a23-4f89-b8b4-b356d6ce0a84",
             "name": "Test event",
             "functionId": "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
             "event": "{\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\",\r\n    \"key3\": \"value3\"\r\n}",
@@ -102,7 +95,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1567677536872
+    "lastSave": 1567683020813
   },
   "VCS_STATE": {
     "provider": "GitHub",
