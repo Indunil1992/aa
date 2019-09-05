@@ -3,8 +3,8 @@ const sns = new AWS.SNS();
 
 exports.handler = function (event, context, callback) {
     sns.setTopicAttributes({
-        AttributeName: 'Policy',
-        AttributeValue: 'Set polict as indunilPOLICYY',
+        AttributeName: 'DeliveryPolicy',
+        AttributeValue: '1',
         TopicArn: 'arn:aws:sns:us-east-1:318300609668:testsnsindunil'
     }).promise()
         .then(data => {
