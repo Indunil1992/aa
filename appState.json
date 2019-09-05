@@ -8,7 +8,10 @@
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "d163edcc-d8eb-4b27-8e8b-c96827c41ecd"
+          "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
+          "99b54c9e-3e09-4f2d-bd33-4a31fd91c79b",
+          "5ab4d568-84cd-4bb7-a731-60860248dcb9",
+          "45232ad9-f0e0-4b3c-a299-1c4c94146015"
         ],
         "isRemovable": false,
         "filePath": "aa"
@@ -40,14 +43,57 @@
             "eventTemplate": "hello-world"
           }
         }
+      },
+      "99b54c9e-3e09-4f2d-bd33-4a31fd91c79b": {
+        "id": "99b54c9e-3e09-4f2d-bd33-4a31fd91c79b",
+        "parent": "a30d8ac2-783e-4267-8fb2-3577be952c6b",
+        "name": "newPython.py",
+        "type": "PYTHON_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "aa/newPython.py",
+        "code": ""
+      },
+      "5ab4d568-84cd-4bb7-a731-60860248dcb9": {
+        "id": "5ab4d568-84cd-4bb7-a731-60860248dcb9",
+        "parent": "a30d8ac2-783e-4267-8fb2-3577be952c6b",
+        "name": "__init__.py",
+        "type": "PYTHON_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "aa/__init__.py",
+        "code": ""
+      },
+      "45232ad9-f0e0-4b3c-a299-1c4c94146015": {
+        "id": "45232ad9-f0e0-4b3c-a299-1c4c94146015",
+        "parent": "a30d8ac2-783e-4267-8fb2-3577be952c6b",
+        "name": "pythonFFile.py",
+        "type": "PYTHON_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "aa/pythonFFile.py",
+        "code": "import boto3\nsns = boto3.client(\"sns\")\n\ndef handler(event, context):\n    try:\n        data = sns.publish(\n            Message='run ',\n            Subject='test sns merge ',\n            MessageAttributes={},\n            MessageStructure='String',\n            TopicArn='arn:aws:sns:us-east-1:318300609668:TestSNS'\n        )\n    except BaseException as e:\n        print(e)\n        raise(e)\n    \n    return {\"message\": \"Successfully executed\"}\n",
+        "config": {
+          "runtime": "python2.7",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": []
       }
     },
     "deletedFiles": [],
     "rootNode": "a30d8ac2-783e-4267-8fb2-3577be952c6b",
     "openFiles": [
-      "d163edcc-d8eb-4b27-8e8b-c96827c41ecd"
+      "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
+      "99b54c9e-3e09-4f2d-bd33-4a31fd91c79b",
+      "45232ad9-f0e0-4b3c-a299-1c4c94146015"
     ],
-    "currentFileId": "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
+    "currentFileId": "45232ad9-f0e0-4b3c-a299-1c4c94146015",
     "resources": {
       "snsusEast1testsnsindunil": {
         "name": "snsusEast1testsnsindunil",
@@ -65,6 +111,18 @@
             }
           ]
         }
+      },
+      "snsusEast1TestSNS": {
+        "name": "snsusEast1TestSNS",
+        "type": "SNS",
+        "config": {
+          "topicMode": 1,
+          "topicName": "TestSNS",
+          "topicArn": "arn:aws:sns:us-east-1:318300609668:TestSNS",
+          "topicRegion": "us-east-1",
+          "snsType": 0,
+          "subscriptions": []
+        }
       }
     },
     "customTemplate": {
@@ -79,6 +137,14 @@
         "shouldPersist": false,
         "displayOnly": false,
         "editable": false
+      },
+      {
+        "lambdaId": "45232ad9-f0e0-4b3c-a299-1c4c94146015",
+        "varKey": "PYTHONPATH",
+        "varValue": "/var/runtime:/var/task/aa",
+        "shouldPersist": true,
+        "displayOnly": false,
+        "editable": true
       }
     ],
     "packageJSON": {
@@ -87,6 +153,13 @@
           "name": "aws-sdk",
           "language": "javascript",
           "version": "2.176.0",
+          "dev": true,
+          "notRemovable": false
+        },
+        "boto3": {
+          "name": "boto3",
+          "language": "python",
+          "version": "1.9.6",
           "dev": true,
           "notRemovable": false
         }
@@ -100,7 +173,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1567685988225
+    "lastSave": 1567687705314
   },
   "VCS_STATE": {
     "provider": "GitHub",
