@@ -3,8 +3,8 @@ const sns = new AWS.SNS();
 
 exports.handler = function (event, context, callback) {
     sns.setTopicAttributes({
-        AttributeName: 'DeliveryPolicy',
-        AttributeValue: '1',
+        AttributeName: 'DisplayName',
+        AttributeValue: '11111',
         TopicArn: 'arn:aws:sns:us-east-1:318300609668:testsnsindunil'
     }).promise()
         .then(data => {
