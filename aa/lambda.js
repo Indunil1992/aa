@@ -4,7 +4,7 @@ const sns = new AWS.SNS();
 exports.handler = function (event, context, callback) {
     sns.subscribe({
         Protocol: 'https',
-        Endpoint: 'https://052p9kjn18.execute-api.us-east-1.amazonaws.com/test11/indunil/qa/sns',
+        Endpoint: 'https://en8h7rqny1.execute-api.us-east-1.amazonaws.com/Test/indunilsub',
         TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestAddTopicSubscription'
     }).promise()
         .then(data => {
@@ -20,4 +20,5 @@ exports.handler = function (event, context, callback) {
 
 
     callback(null, { "message": "Successfully executed:HTTP" });
+
 }
