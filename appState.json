@@ -25,7 +25,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "aa/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.publish({\n        Message: 'test message',\n        Subject: 'test Subject',\n        MessageAttributes: {},\n        MessageStructure: 'String',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testsnsindunil'\n    }).promise()\n        .then(data => {\n            // your code goes here\n        })\n        .catch(err => {\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.setTopicAttributes({\n        AttributeName: 'Policy',\n        AttributeValue: 'set policy as new new policy',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:amplify_codecommit_topic'\n    }).promise()\n        .then(data => {\n             console.log(\"dataaa\");\n              console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n            console.log(err);\n            console.log(\"errrr\");\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -75,7 +75,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "aa/pythonFFile.py",
-        "code": "import boto3\nsns = boto3.client(\"sns\")\n\ndef handler(event, context):\n    try:\n        data = sns.publish(\n            Message='run ',\n            Subject='test sns merge ',\n            MessageAttributes={},\n            MessageStructure='String',\n            TopicArn='arn:aws:sns:us-east-1:318300609668:TestSNS'\n        )\n    except BaseException as e:\n        print(e)\n        raise(e)\n    \n    return {\"message\": \"Successfully executed\"}\n",
+        "code": "import boto3\nsns = boto3.client(\"sns\")\n\ndef handler(event, context):\n\n    try:\n        data = sns.set_topic_attributes(\n            AttributeName='Policy',\n            AttributeValue='setPolicy',\n            TopicArn='arn:aws:sns:us-east-1:318300609668:amplify_codecommit_topic'\n        )\n    except BaseException as e:\n        print(e)\n        raise(e)\n    \n    return {\"message\": \"Successfully executed\"}\n",
         "config": {
           "runtime": "python2.7",
           "handler": "handler",
@@ -89,36 +89,17 @@
     "deletedFiles": [],
     "rootNode": "a30d8ac2-783e-4267-8fb2-3577be952c6b",
     "openFiles": [
-      "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
-      "99b54c9e-3e09-4f2d-bd33-4a31fd91c79b",
-      "45232ad9-f0e0-4b3c-a299-1c4c94146015"
+      "d163edcc-d8eb-4b27-8e8b-c96827c41ecd"
     ],
-    "currentFileId": "45232ad9-f0e0-4b3c-a299-1c4c94146015",
+    "currentFileId": "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
     "resources": {
-      "snsusEast1testsnsindunil": {
-        "name": "snsusEast1testsnsindunil",
+      "snsusEast1amplifycodecommittopic": {
+        "name": "snsusEast1amplifycodecommittopic",
         "type": "SNS",
         "config": {
           "topicMode": 1,
-          "topicName": "testsnsindunil",
-          "topicArn": "arn:aws:sns:us-east-1:318300609668:testsnsindunil",
-          "topicRegion": "us-east-1",
-          "snsType": 0,
-          "subscriptions": [
-            {
-              "type": "http",
-              "endpoint": "http://indunilTest-sns.QA"
-            }
-          ]
-        }
-      },
-      "snsusEast1TestSNS": {
-        "name": "snsusEast1TestSNS",
-        "type": "SNS",
-        "config": {
-          "topicMode": 1,
-          "topicName": "TestSNS",
-          "topicArn": "arn:aws:sns:us-east-1:318300609668:TestSNS",
+          "topicName": "amplify_codecommit_topic",
+          "topicArn": "arn:aws:sns:us-east-1:318300609668:amplify_codecommit_topic",
           "topicRegion": "us-east-1",
           "snsType": 0,
           "subscriptions": []
@@ -173,7 +154,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1567687705314
+    "lastSave": 1567743447576
   },
   "VCS_STATE": {
     "provider": "GitHub",

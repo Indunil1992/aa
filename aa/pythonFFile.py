@@ -2,13 +2,12 @@ import boto3
 sns = boto3.client("sns")
 
 def handler(event, context):
+
     try:
-        data = sns.publish(
-            Message='run ',
-            Subject='test sns merge ',
-            MessageAttributes={},
-            MessageStructure='String',
-            TopicArn='arn:aws:sns:us-east-1:318300609668:TestSNS'
+        data = sns.set_topic_attributes(
+            AttributeName='Policy',
+            AttributeValue='setPolicy',
+            TopicArn='arn:aws:sns:us-east-1:318300609668:amplify_codecommit_topic'
         )
     except BaseException as e:
         print(e)
