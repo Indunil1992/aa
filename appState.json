@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "aa/lambda.js",
-        "code": "\nexports.handler = function (event, context, callback) {\n\n\n    callback(event, { \"message\": \"Successfully executed\" });\n}\n",
+        "code": "\nexports.handler = function (event, context, callback) {\n\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}\n",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -47,9 +47,7 @@
         }
       }
     },
-    "deletedFiles": [
-      "aa/test.js"
-    ],
+    "deletedFiles": [],
     "rootNode": "a30d8ac2-783e-4267-8fb2-3577be952c6b",
     "openFiles": [
       "d163edcc-d8eb-4b27-8e8b-c96827c41ecd"
@@ -175,7 +173,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1567765926313
+    "lastSave": 1567766036282
   },
   "VCS_STATE": {
     "provider": "GitHub",
