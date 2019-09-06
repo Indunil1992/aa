@@ -25,7 +25,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "aa/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.setTopicAttributes({\n        AttributeName: 'Policy',\n        AttributeValue: '\"Id\": \"__default_policy_ID\"',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'\n    }).promise()\n        .then(data => {\n            console.log(\"dataaa\");\n            console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n            console.log(err);\n            console.log(\"errrr\");\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.subscribe({\n        Protocol: 'http',\n        Endpoint: 'http://indunilRajapakse.com',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestAddTopicSubscription'\n    }).promise()\n        .then(data => {\n            // your code goes here\n        })\n        .catch(err => {\n            // error handling goes here\n        });\n\n\n    callback(null, { \"message\": \"Successfully executed:HTTP\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -37,6 +37,13 @@
         "testCases": {
           "fce28062-1526-46e1-93bf-f3dd0f35fdb0": {
             "id": "fce28062-1526-46e1-93bf-f3dd0f35fdb0",
+            "name": "Test event",
+            "functionId": "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
+            "event": "{\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\",\r\n    \"key3\": \"value3\"\r\n}",
+            "eventTemplate": "hello-world"
+          },
+          "38198f07-1350-4b5c-aed8-e311240fe9df": {
+            "id": "38198f07-1350-4b5c-aed8-e311240fe9df",
             "name": "Test event",
             "functionId": "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
             "event": "{\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\",\r\n    \"key3\": \"value3\"\r\n}",
@@ -110,15 +117,16 @@
           ]
         }
       },
-      "snsusEast1TestSNS": {
-        "name": "snsusEast1TestSNS",
+      "snsusEast1TestAddTopicSubscription": {
+        "name": "snsusEast1TestAddTopicSubscription",
         "type": "SNS",
         "config": {
-          "topicMode": 1,
-          "topicName": "TestSNS",
-          "topicArn": "arn:aws:sns:us-east-1:318300609668:TestSNS",
+          "topicMode": 0,
+          "topicName": "TestAddTopicSubscription",
+          "topicArn": "arn:aws:sns:us-east-1:318300609668:TestAddTopicSubscription",
           "topicRegion": "us-east-1",
           "snsType": 0,
+          "topicDisplayName": "checkSub",
           "subscriptions": []
         }
       }
@@ -171,7 +179,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1567744725940
+    "lastSave": 1567745662988
   },
   "VCS_STATE": {
     "provider": "GitHub",
