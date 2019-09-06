@@ -8,9 +8,13 @@ exports.handler = function (event, context, callback) {
         TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestAddTopicSubscription'
     }).promise()
         .then(data => {
+            console.log("pass");
+            console.log(data);
             // your code goes here
         })
         .catch(err => {
+            console.log("failll");
+            console.log(err);
             // error handling goes here
         });
 
