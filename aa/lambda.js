@@ -4,8 +4,8 @@ const sns = new AWS.SNS();
 exports.handler = function (event, context, callback) {
     sns.setTopicAttributes({
         AttributeName: 'Policy',
-        AttributeValue: 'http',
-        TopicArn: 'arn:aws:sns:us-east-1:318300609668:amplify_codecommit_topic'
+        AttributeValue: '"Id": "135081N"',
+        TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'
     }).promise()
         .then(data => {
             console.log("dataaa");
