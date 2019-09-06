@@ -18,7 +18,7 @@ exports.handler = function (event, context, callback) {
             // error handling goes here
         });
 
-
+console.log(event);
     callback(null, { "message": "Successfully executed:HTTP" });
 
 
