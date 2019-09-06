@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "aa/lambda.js",
-        "code": "\nexports.handler = function (event, context, callback) {\n\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}\n",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.subscribe({\n        Protocol: 'https',\n        Endpoint: 'https://052p9kjn18.execute-api.us-east-1.amazonaws.com/test11/indunil/qa/tst\t',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testsnsindunil'\n    }).promise()\n        .then(data => {\n            // your code goes here\n        })\n        .catch(err => {\n            // error handling goes here\n        });\n\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}\n",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -173,7 +173,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1567766036282
+    "lastSave": 1567766132060
   },
   "VCS_STATE": {
     "provider": "GitHub",
