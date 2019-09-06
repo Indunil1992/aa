@@ -4,7 +4,7 @@ const sns = new AWS.SNS();
 exports.handler = function (event, context, callback) {
     sns.subscribe({
         Protocol: 'http',
-        Endpoint: 'http://indunilRajapakse.com',
+        Endpoint: 'http://indunilrajapakse.com',
         TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestAddTopicSubscription'
     }).promise()
         .then(data => {
