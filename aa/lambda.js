@@ -14,6 +14,9 @@ exports.handler = function (event, context, callback) {
             // error handling goes here
         });
 
+exports.handler = function (event, context, callback) {
+        callback (event);
+}
 
-    callback(event);
+    callback(null, { "message": "Successfully executed" });
 }
