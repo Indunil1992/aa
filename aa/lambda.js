@@ -23,6 +23,3 @@ exports.handler = function (event, context, callback) {
 
 
 }
-    exports.handler = function (event, context, callback) {
-    callback(event);
-    }
