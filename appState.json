@@ -23,7 +23,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "aa/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.subscribe({\n        Protocol: 'http',\n        Endpoint: 'http://en8h7rqny1.execute-api.us-east-1.amazonaws.com/Test/indunil',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestAddTopicSubscription'\n    }).promise()\n        .then(data => {\n            console.log(\"pass\");\n            console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n            console.log(\"failll\");\n            console.log(err);\n            // error handling goes here\n        });\n\ncallback(event);\n}\n",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.subscribe({\n        Protocol: 'https',\n        Endpoint: 'https://052p9kjn18.execute-api.us-east-1.amazonaws.com/test11/indunil/qa/sns',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:testsnsindunil'\n    }).promise()\n        .then(data => {\n            // your code goes here\n        })\n        .catch(err => {\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}\n",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -31,12 +31,7 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": [
-          {
-            "resourceName": "apigusEast1sachithraAPInameindunilqasnsget",
-            "config": {}
-          }
-        ],
+        "triggers": [],
         "testCases": {
           "dea86339-661d-4a45-ad8d-088653b84728": {
             "id": "dea86339-661d-4a45-ad8d-088653b84728",
@@ -64,36 +59,26 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": []
+        "triggers": [
+          {
+            "resourceName": "apigusEast1sachithraAPInamesnsany",
+            "config": {}
+          }
+        ]
       }
     },
-    "deletedFiles": [],
+    "deletedFiles": [
+      "aa/ll.js"
+    ],
     "rootNode": "a30d8ac2-783e-4267-8fb2-3577be952c6b",
     "openFiles": [
       "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
       "1c190902-cde8-4528-9853-071e811e1db0"
     ],
-    "currentFileId": "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
+    "currentFileId": "1c190902-cde8-4528-9853-071e811e1db0",
     "resources": {
-      "snsusEast1amplifycodecommittopic": {
-        "name": "snsusEast1amplifycodecommittopic",
-        "type": "SNS",
-        "config": {
-          "topicMode": 1,
-          "topicName": "amplify_codecommit_topic",
-          "topicArn": "arn:aws:sns:us-east-1:318300609668:amplify_codecommit_topic",
-          "topicRegion": "us-east-1",
-          "snsType": 0,
-          "subscriptions": [
-            {
-              "type": "http",
-              "endpoint": "http://"
-            }
-          ]
-        }
-      },
-      "apigusEast1sachithraAPInameindunilqasnsany": {
-        "name": "apigusEast1sachithraAPInameindunilqasnsany",
+      "apigusEast1sachithraAPInamesnsany": {
+        "name": "apigusEast1sachithraAPInamesnsany",
         "type": "API_GATEWAY",
         "config": {
           "selectedRegion": "us-east-1",
@@ -104,58 +89,32 @@
           "rootResourceId": "zrjp6rdv3b",
           "existingResources": {
             "/indunil": "gv2c1w",
+            "/indunil/qa/sns": "j4l877",
             "/indunil/qa/tst": "r6hp77",
             "/indunil/qa": "yptvr5",
             "/": "zrjp6rdv3b"
           },
-          "resourceMode": 0,
-          "resourceName": "indunil/qa/sns",
+          "resourceMode": 1,
           "resourcePath": "/indunil/qa/sns",
+          "resourceName": "sns",
+          "resourceId": "j4l877",
           "restMethod": "ANY",
           "proxyIntegration": false,
           "enableCORS": false,
           "stageMode": 0,
-          "stageName": "test11",
+          "stageName": "test111",
           "mode": 1
         }
       },
-      "apigusEast1sachithraAPInameindunilqasnsget": {
-        "name": "apigusEast1sachithraAPInameindunilqasnsget",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "sachithraAPIname",
-          "apiId": "052p9kjn18",
-          "endpointType": "REGIONAL",
-          "rootResourceId": "zrjp6rdv3b",
-          "existingResources": {
-            "/indunil": "gv2c1w",
-            "/indunil/qa/tst": "r6hp77",
-            "/indunil/qa": "yptvr5",
-            "/": "zrjp6rdv3b"
-          },
-          "resourceMode": 0,
-          "resourceName": "indunil/qa/sns",
-          "resourcePath": "/indunil/qa/sns",
-          "restMethod": "GET",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 0,
-          "stageName": "test11",
-          "mode": 1
-        }
-      },
-      "snsusEast1TestAddTopicSubscription": {
-        "name": "snsusEast1TestAddTopicSubscription",
+      "snsusEast1testsnsindunil": {
+        "name": "snsusEast1testsnsindunil",
         "type": "SNS",
         "config": {
-          "topicMode": 0,
-          "topicName": "TestAddTopicSubscription",
-          "topicArn": "arn:aws:sns:us-east-1:318300609668:TestAddTopicSubscription",
+          "topicMode": 1,
+          "topicName": "testsnsindunil",
+          "topicArn": "arn:aws:sns:us-east-1:318300609668:testsnsindunil",
           "topicRegion": "us-east-1",
           "snsType": 0,
-          "topicDisplayName": "checkSub",
           "subscriptions": []
         }
       }
@@ -208,7 +167,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1567764241237
+    "lastSave": 1567764820989
   },
   "VCS_STATE": {
     "provider": "GitHub",
