@@ -35,7 +35,7 @@
         },
         "triggers": [
           {
-            "resourceName": "apigusEast1sachithraAPInameindunilqasnsany",
+            "resourceName": "apigusEast1sachithraAPInameindunilqasnsget",
             "config": {}
           }
         ],
@@ -142,6 +142,33 @@
           "mode": 1
         }
       },
+      "apigusEast1sachithraAPInameindunilqasnsget": {
+        "name": "apigusEast1sachithraAPInameindunilqasnsget",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "sachithraAPIname",
+          "apiId": "052p9kjn18",
+          "endpointType": "REGIONAL",
+          "rootResourceId": "zrjp6rdv3b",
+          "existingResources": {
+            "/indunil": "gv2c1w",
+            "/indunil/qa/tst": "r6hp77",
+            "/indunil/qa": "yptvr5",
+            "/": "zrjp6rdv3b"
+          },
+          "resourceMode": 0,
+          "resourceName": "indunil/qa/sns",
+          "resourcePath": "/indunil/qa/sns",
+          "restMethod": "GET",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 0,
+          "stageName": "test11",
+          "mode": 1
+        }
+      },
       "snsusEast1TestAddTopicSubscription": {
         "name": "snsusEast1TestAddTopicSubscription",
         "type": "SNS",
@@ -204,7 +231,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1567761829584
+    "lastSave": 1567762254998
   },
   "VCS_STATE": {
     "provider": "GitHub",
