@@ -4,8 +4,8 @@ const sns = new AWS.SNS();
 exports.handler = function (event, context, callback) {
 
     sns.subscribe({
-        Protocol: 'application',
-        Endpoint: 'arn:aws:sns:us-east-1:318300609668:test/AWS/my-app1',
+        Protocol: 'lambda',
+        Endpoint: 'arn:aws:lambda:us-east-1:111111111111:function:my-function',
         TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'
     }).promise()
         .then(data => {
