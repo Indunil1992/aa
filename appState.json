@@ -120,7 +120,7 @@
           "enableCORS": false,
           "stageMode": 1,
           "stageName": "test11",
-          "stageDeploymentId": "7ixlfd",
+          "stageDeploymentId": "ymdf3v",
           "mode": 1
         }
       }
@@ -173,7 +173,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1567766755290
+    "lastSave": 1568089725191
   },
   "VCS_STATE": {
     "provider": "GitHub",
