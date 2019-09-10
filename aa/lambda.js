@@ -4,18 +4,18 @@ const sns = new AWS.SNS();
 exports.handler = function (event, context, callback) {
 
     sns.subscribe({
-        Protocol: 'email-json',
-        Endpoint: 'indunil@adroitlogic.com',
+        Protocol: 'sqs',
+        Endpoint: 'arn:aws:sqs:us-east-1:111111111111:my-queue',
         TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'
     }).promise()
         .then(data => {
             console.log("dataaaa");
-              console.log(data);
+            console.log(data);
             // your code goes here
         })
         .catch(err => {
-              console.log("fail");
-                console.log(err);
+            console.log("fail");
+            console.log(err);
             // error handling goes here
         });
 

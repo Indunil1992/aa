@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "aa/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n\n    sns.subscribe({\n        Protocol: 'email-json',\n        Endpoint: 'indunil@adroitlogic.com',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'\n    }).promise()\n        .then(data => {\n            console.log(\"dataaaa\");\n              console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n              console.log(\"fail\");\n                console.log(err);\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}\n",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n\n    sns.subscribe({\n        Protocol: 'sqs',\n        Endpoint: 'arn:aws:sqs:us-east-1:111111111111:my-queue',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'\n    }).promise()\n        .then(data => {\n            console.log(\"dataaaa\");\n            console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n            console.log(\"fail\");\n            console.log(err);\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}\n",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -30,10 +30,17 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": [],
+        "triggers": [
+          {
+            "resourceName": "sqstest",
+            "config": {
+              "BatchSize": "10"
+            }
+          }
+        ],
         "testCases": {
-          "dea86339-661d-4a45-ad8d-088653b84728": {
-            "id": "dea86339-661d-4a45-ad8d-088653b84728",
+          "4223e1fb-2a2a-4b83-9833-de7799c8659d": {
+            "id": "4223e1fb-2a2a-4b83-9833-de7799c8659d",
             "name": "Test event",
             "functionId": "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
             "event": "{\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\",\r\n    \"key3\": \"value3\"\r\n}",
@@ -49,35 +56,6 @@
     ],
     "currentFileId": "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
     "resources": {
-      "apigusEast1sachithraAPInameqapost": {
-        "name": "apigusEast1sachithraAPInameqapost",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "sachithraAPIname",
-          "apiId": "052p9kjn18",
-          "endpointType": "REGIONAL",
-          "rootResourceId": "zrjp6rdv3b",
-          "existingResources": {
-            "/indunil": "gv2c1w",
-            "/indunil/qa/tst": "r6hp77",
-            "/indunil/qa": "yptvr5",
-            "/": "zrjp6rdv3b"
-          },
-          "resourceMode": 1,
-          "resourcePath": "/indunil/qa",
-          "resourceName": "qa",
-          "resourceId": "yptvr5",
-          "restMethod": "POST",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 1,
-          "stageName": "test11",
-          "stageDeploymentId": "ymdf3v",
-          "mode": 1
-        }
-      },
       "snsusEast1TestSNS": {
         "name": "snsusEast1TestSNS",
         "type": "SNS",
@@ -88,6 +66,33 @@
           "topicRegion": "us-east-1",
           "snsType": 0,
           "subscriptions": []
+        }
+      },
+      "sqstest": {
+        "name": "sqstest",
+        "type": "SQS",
+        "config": {
+          "mode": 0,
+          "existing": false,
+          "name": "test",
+          "url": "https://sqs.us-east-1.amazonaws.com/318300609668/test",
+          "selectedRegion": "us-east-1",
+          "deliveryDelay": 0,
+          "deliveryDelayUnit": "seconds",
+          "useRedrivePolicy": false,
+          "useSSE": false,
+          "kmsCustomerMasterKey": "default",
+          "accountId": "318300609668",
+          "dataKeyReusePeriod": 5,
+          "queueType": "standardQueue",
+          "defaultVisibilityTimeout": "60",
+          "defaultVisibilityTimeoutUnit": "seconds",
+          "messageRetentionPeriod": 4,
+          "messageRetentionPeriodUnit": "days",
+          "maximumMessageSize": 256,
+          "receiveMessageWaitTime": 0,
+          "deadLetterQueueName": "",
+          "contentBasedDeduplication": false
         }
       }
     },
@@ -139,7 +144,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1568090707354
+    "lastSave": 1568091819628
   },
   "VCS_STATE": {
     "provider": "GitHub",
