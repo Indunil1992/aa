@@ -4,8 +4,8 @@ const sns = new AWS.SNS();
 exports.handler = function (event, context, callback) {
 
     sns.subscribe({
-        Protocol: 'sqs',
-        Endpoint: 'arn:aws:sqs:us-east-1:111111111112:my-queus',
+        Protocol: 'sms',
+        Endpoint: '+94717177220',
         TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'
     }).promise()
         .then(data => {
