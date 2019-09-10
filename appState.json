@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "aa/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n\n    sns.subscribe({\n        Protocol: 'https',\n        Endpoint: 'https://052p9kjn18.execute-api.us-east-1.amazonaws.com/test11/indunil/qa',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'\n    }).promise()\n        .then(data => {\n            // your code goes here\n        })\n        .catch(err => {\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}\n",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n\n    sns.subscribe({\n        Protocol: 'email-json',\n        Endpoint: 'indunil@adroitlogic.com',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'\n    }).promise()\n        .then(data => {\n            console.log(\"dataaaa\");\n              console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n              console.log(\"fail\");\n                console.log(err);\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}\n",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -30,12 +30,7 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": [
-          {
-            "resourceName": "apigusEast1sachithraAPInameqapost",
-            "config": {}
-          }
-        ],
+        "triggers": [],
         "testCases": {
           "dea86339-661d-4a45-ad8d-088653b84728": {
             "id": "dea86339-661d-4a45-ad8d-088653b84728",
@@ -54,76 +49,6 @@
     ],
     "currentFileId": "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
     "resources": {
-      "apigusEast1sachithraAPInamesnsany": {
-        "name": "apigusEast1sachithraAPInamesnsany",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "sachithraAPIname",
-          "apiId": "052p9kjn18",
-          "endpointType": "REGIONAL",
-          "rootResourceId": "zrjp6rdv3b",
-          "existingResources": {
-            "/indunil": "gv2c1w",
-            "/indunil/qa/sns": "j4l877",
-            "/indunil/qa/tst": "r6hp77",
-            "/indunil/qa": "yptvr5",
-            "/": "zrjp6rdv3b"
-          },
-          "resourceMode": 1,
-          "resourcePath": "/indunil/qa/sns",
-          "resourceName": "sns",
-          "resourceId": "j4l877",
-          "restMethod": "ANY",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 0,
-          "stageName": "test111",
-          "mode": 1
-        }
-      },
-      "snsusEast1testsnsindunil": {
-        "name": "snsusEast1testsnsindunil",
-        "type": "SNS",
-        "config": {
-          "topicMode": 1,
-          "topicName": "testsnsindunil",
-          "topicArn": "arn:aws:sns:us-east-1:318300609668:testsnsindunil",
-          "topicRegion": "us-east-1",
-          "snsType": 0,
-          "subscriptions": []
-        }
-      },
-      "apigusEast1sachithraAPInametstget": {
-        "name": "apigusEast1sachithraAPInametstget",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "sachithraAPIname",
-          "apiId": "052p9kjn18",
-          "endpointType": "REGIONAL",
-          "rootResourceId": "zrjp6rdv3b",
-          "existingResources": {
-            "/indunil": "gv2c1w",
-            "/indunil/qa/tst": "r6hp77",
-            "/indunil/qa": "yptvr5",
-            "/": "zrjp6rdv3b"
-          },
-          "resourceMode": 1,
-          "resourcePath": "/indunil/qa/tst",
-          "resourceName": "tst",
-          "resourceId": "r6hp77",
-          "restMethod": "GET",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 1,
-          "stageName": "test11",
-          "stageDeploymentId": "ymdf3v",
-          "mode": 1
-        }
-      },
       "apigusEast1sachithraAPInameqapost": {
         "name": "apigusEast1sachithraAPInameqapost",
         "type": "API_GATEWAY",
@@ -214,7 +139,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1568090116051
+    "lastSave": 1568090707354
   },
   "VCS_STATE": {
     "provider": "GitHub",
