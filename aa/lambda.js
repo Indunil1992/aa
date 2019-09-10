@@ -5,7 +5,7 @@ exports.handler = function (event, context, callback) {
 
     sns.subscribe({
         Protocol: 'sqs',
-        Endpoint: 'arn:aws:sqs:us-east-1:111111111111:my-queue',
+        Endpoint: 'arn:aws:sns:us-east-1:318300609668:TestSNS',
         TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'
     }).promise()
         .then(data => {
