@@ -22,9 +22,8 @@
         "children": [],
         "isRemovable": true,
         "filePath": "aa/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.confirmSubscription({\n        Token: '2336412f37fb687f5d51e6e241dbca52e6afbd294a3a21ab82bbfe3763c100369ac6cbf4f840fe02081f7192b249e5ddc24c4ea5ff3f22c2845814affd4985b509a93a36e7bbf7b40850bf3757cd3c0cb238641c76389c3fde16b308b6fb0bc2a5916d0e2f986a8457503908ed6f0027',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS',\n        AuthenticateOnUnsubscribe: 'false'\n    }).promise()\n        .then(data => {\n            console.log(\"passss\");\n            console.log(data);\n            // your code goes here\n        })\n        .catch(err => {\n            console.log(\"errrrr\");\n            console.log(err);\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}\n",
         "config": {
-          "runtime": "nodejs8.10",
+          "runtime": "nodejs10.x",
           "handler": "handler",
           "timeout": 60,
           "memory": 128,
@@ -39,31 +38,35 @@
             "event": "{\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\",\r\n    \"key3\": \"value3\"\r\n}",
             "eventTemplate": "hello-world"
           }
+        },
+        "lastUpdated": 1603353772640,
+        "cursor": {
+          "lineNumber": 20,
+          "column": 1
         }
       }
     },
-    "rootNode": "a30d8ac2-783e-4267-8fb2-3577be952c6b",
     "openFiles": [
       "d163edcc-d8eb-4b27-8e8b-c96827c41ecd"
     ],
     "currentFileId": "d163edcc-d8eb-4b27-8e8b-c96827c41ecd",
     "resources": {
-      "snsusEast1TestSNS": {
-        "name": "snsusEast1TestSNS",
+      "snsTestSNS": {
+        "name": "snsTestSNS",
         "type": "SNS",
         "config": {
           "topicMode": 1,
           "topicName": "TestSNS",
           "topicArn": "arn:aws:sns:us-east-1:318300609668:TestSNS",
-          "topicRegion": "us-east-1",
           "snsType": 0,
           "subscriptions": []
         }
       }
     },
     "customTemplate": {
-      "dialect": null,
-      "definitions": null
+      "dialect": "CloudFormation",
+      "definitions": null,
+      "syntax": "JSON"
     },
     "envVariables": [
       {
@@ -87,7 +90,7 @@
       "dependencies": {
         "aws-sdk": {
           "name": "aws-sdk",
-          "language": "javascript",
+          "language": "nodejs",
           "version": "2.176.0",
           "dev": true,
           "notRemovable": false
@@ -100,16 +103,19 @@
           "notRemovable": false
         }
       }
-    }
+    },
+    "rootNode": "a30d8ac2-783e-4267-8fb2-3577be952c6b"
   },
   "PROJECT_META": {
+    "sigmaVersion": "1.4.4.1",
     "projectName": "aa",
     "projectDescription": "",
     "projectVersion": "1.0.0",
     "projectRegion": "us-east-1",
     "platform": "AWS",
+    "language": "nodejs",
     "platformRegions": {},
-    "lastSave": 1568100676693
+    "lastSave": 1603353839800
   },
   "VCS_STATE": {
     "provider": "GitHub",
